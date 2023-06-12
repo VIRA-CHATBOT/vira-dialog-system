@@ -40,5 +40,8 @@ WORKDIR /app/$SERVICE_NAME
 USER ${NONROOT_USER}
 EXPOSE 8000
 
+ENV BOT_WA_APIKEY tK81mPYgrzxjWo4GPsmsbV0jNCHoQOll0thlbV_URUb
+ENV BOT_WA_URL https://api.us-east.language-translator.watson.cloud.ibm.com/instances/ea08a761-064a-493a-9c53-affba12dc766
+
 # If running behind a proxy like Nginx or Traefik add --proxy-headers
 ENTRYPOINT ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--proxy-headers", "--log-config", "/app/resources/logging.conf", "--log-level", "debug"]
