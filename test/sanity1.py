@@ -18,8 +18,8 @@ data = {
 }
 
 #response = requests.post("http://0.0.0.0:8100/dialog/en", headers=headers, json=data)
-response = requests.post("http://0.0.0.0:8000/dialog/en", headers=headers, json=data)
-#response = requests.post("http://vira.eb5e3a7cc143455e9aa1.eastus.aksapp.io/dialog/en", headers=headers, json=data)
+#response = requests.post("http://0.0.0.0:8000/dialog/en", headers=headers, json=data)
+response = requests.post("http://vira.eb5e3a7cc143455e9aa1.eastus.aksapp.io/dialog/en", headers=headers, json=data)
 session_id = response.json()['session_id']
 
 data = {
@@ -27,6 +27,6 @@ data = {
     'text': "Can children get the vaccine?"
 }
 #response = requests.post("http://0.0.0.0:8100/dialog/en", headers=headers, json=data)
-response = requests.post("http://0.0.0.0:8000/dialog/en", headers=headers, json=data)
-#response = requests.post("http://vira.eb5e3a7cc143455e9aa1.eastus.aksapp.io/dialog/en", headers=headers, json=data)
+#response = requests.post("http://0.0.0.0:8000/dialog/en", headers=headers, json=data)
+response = requests.post("http://vira.eb5e3a7cc143455e9aa1.eastus.aksapp.io/dialog/en", headers=headers, json=data)
 print(json.dumps(response.json(), indent=4))
