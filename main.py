@@ -18,8 +18,11 @@ from components.dialog_manager import DialogManager
 from tools.db_manager import DBManager
 from tools.service_utils import check_input_text, check_session_id, verify_bool_feedback, verify_int_feedback, \
     verify_message_id
+#import sys
 
-logging_config_file = os.path.join('resources', 'logging.conf')
+#logging_config_file = os.path.join('resources', 'logging.conf')
+logging_config_file = os.path.join(os.getcwd(),'resources', 'logging.conf')
+#print("logging_config_file:"+logging_config_file, file=sys.stderr)
 logging.config.fileConfig(logging_config_file, disable_existing_loggers=False)
 
 log = logging.getLogger('main')
@@ -29,6 +32,7 @@ app = FastAPI(openapi_url=None)
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 VIRA_API_KEY = os.environ['VIRA_API_KEY']
+#VIRA_API_KEY = "3469d6608b2f8646ce514218a0eba49989175ba98bcdc0b898649c052b4b5bf8"
 
 
 # bot_name = "bot"
