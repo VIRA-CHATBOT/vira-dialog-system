@@ -18,6 +18,8 @@ WORKDIR /app
 
 ENV PYTHONPATH=/app
 
+#ENV SERVICE_NAME=vira
+
 ## install base requirements
 COPY requirements.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
@@ -27,6 +29,10 @@ RUN pip install -U setuptools
 RUN python -m pip uninstall -y pip
 RUN apt-get -y remove git
 RUN dpkg --remove libcurl3-gnutls
+RUN apt-get install -y curl \
+			wget \
+			net-tools \
+			vim
 
 COPY . .
 
@@ -36,12 +42,19 @@ RUN chown -R ${NONROOT_USER} .
 RUN chgrp -R ${NONROOT_USER} .
 
 # prepare for run
-WORKDIR /app/$SERVICE_NAME
+#WORKDIR /app/$SERVICE_NAME
 USER ${NONROOT_USER}
-EXPOSE 8000
+EXPOSE 8000 8100
 
+ENV VIRA_API_KEY 3469d6608b2f8646ce514218a0eba49989175ba98bcdc0b898649c052b4b5bf8
 ENV BOT_WA_APIKEY tK81mPYgrzxjWo4GPsmsbV0jNCHoQOll0thlbV_URUb
 ENV BOT_WA_URL https://api.us-east.language-translator.watson.cloud.ibm.com/instances/ea08a761-064a-493a-9c53-affba12dc766
+ENV BOT_DASHBOARD_CODE ''
+ENV BOT_KPA_HOST	''
+ENV BOT_KPA_APIKEY	''
+ENV BOT_INTENT_CLASSIFIER_URL http://intent-classification.dip.svc.cluster.local:8000
+ENV BOT_DIALOG_ACT_CLASSIFIER_URL http://dialog-act-classification.dip.svc.cluster.local:8000
+
 
 # If running behind a proxy like Nginx or Traefik add --proxy-headers
 ENTRYPOINT ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--proxy-headers", "--log-config", "/app/resources/logging.conf", "--log-level", "debug"]
