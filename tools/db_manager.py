@@ -55,7 +55,7 @@ class DBManager(metaclass=Singleton):
 
     def create_client(self):
         return MongoClient(self.url, tls=True, tlsCAFile=self.certificate,
-                           socketTimeoutMS=self.timeout_ms, wTimeoutMS=self.timeout_ms)
+                           socketTimeoutMS=self.timeout_ms, wTimeoutMS=self.timeout_ms, retryWrites=False)
 
     @db_renew_client_on_exception
     def create_dialog(self, dialog_label=None, campaign_id=None, opening_survey_flow=None,
