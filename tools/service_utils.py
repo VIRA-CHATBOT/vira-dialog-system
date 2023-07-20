@@ -22,8 +22,7 @@ def get_scores(url, pairs, batch_size, disable_cache):
             'Accept':'application/json',
             'Content-Type':'application/json',
             'Pragma':'no-cache'
-            } if disable_cache else 
-            {
+            } if disable_cache else {
             'Accept':'application/json',
             'Content-Type':'application/json'
             }
