@@ -192,4 +192,4 @@ def handle_user_input(language_code: Optional[str], request: MessageRequest,
 
 
 if __name__ == '__main__':
-    uvicorn.run(app, host="0.0.0.0", port=8100, log_config=logging_config_file)
+    uvicorn.run(app, host="0.0.0.0", port=8000, log_config=logging_config_file)
