@@ -8,7 +8,6 @@ from tools.db_manager import DBManager
 from tools.service_utils import get_scores
 import pandas as pd
 
-
 class KpMatching:
 
     def __init__(self):
