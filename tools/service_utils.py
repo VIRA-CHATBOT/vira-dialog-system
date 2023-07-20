@@ -9,18 +9,33 @@ from urllib.parse import urlparse
 from urllib.parse import parse_qsl
 
 from tools.db_manager import DBManager
+import sys
+import json
 
 
 def get_scores(url, pairs, batch_size, disable_cache):
     scores = []
     for begin in range(0, len(pairs), batch_size):
         batch = pairs[begin: begin + batch_size]
-        headers = {'Pragma': 'no-cache'} if disable_cache else None
-        resp = requests.post(url, json={'pairs': batch}, headers=headers)
+    #   headers = {'Pragma': 'no-cache'} if disable_cache else None
+        headers = {
+            'Accept':'application/json',
+            'Content-Type':'application/json',
+            'Pragma':'no-cache'
+            } if disable_cache else 
+            {
+            'Accept':'application/json',
+            'Content-Type':'application/json'
+            }
+        json_data = json.dumps({'pairs':batch})
+     #  resp = requests.post(url, json={"pairs": batch}, headers=headers)
+        resp = requests.post(url, json=json_data, headers=headers)
         if resp.status_code != 200:
             raise ConnectionError('Failed calling server at %s: (%d) %s' %
                                   (url, resp.status_code, resp.reason))
-        scores += resp.json()
+       # scores += resp.json()
+        data = resp.json()
+        scores += data[1]
     return scores
 
 
