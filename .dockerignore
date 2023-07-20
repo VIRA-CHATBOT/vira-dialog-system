@@ -1,1 +1,2 @@
-resources/db/*
+resources/db/local
+.profile
