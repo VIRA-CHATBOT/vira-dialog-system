@@ -53,6 +53,7 @@ ENV BOT_DASHBOARD_CODE ''
 ENV BOT_KPA_HOST	''
 ENV BOT_KPA_APIKEY	''
 ENV BOT_INTENT_CLASSIFIER_URL http://intent-classification.dip.svc.cluster.local:8000
+#ENV BOT_INTENT_CLASSIFIER_URL http://localhost:8040
 ENV BOT_DIALOG_ACT_CLASSIFIER_URL http://dialog-act-classification.dip.svc.cluster.local:8000
 
 
