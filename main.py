@@ -108,12 +108,9 @@ async def unicorn_exception_handler(_request: Request, exc: Exception):
 def handle_user_input(language_code: Optional[str], request: MessageRequest,
                       _token: str = Depends(verify_token)):
     log.info('New message')
-
     if not request.session_id:
         log.info('Processing new session')
-
         dialog_label = None
-
         # # extract the campaign id
         # if 'Campaign-Id' in headers:
         #     campaign_id = headers['Campaign-Id']
