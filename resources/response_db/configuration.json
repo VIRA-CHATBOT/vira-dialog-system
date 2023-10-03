@@ -1,7 +1,7 @@
 {
   "watson_translator": {
-    "apikey": "w7g7iSDgtS0f1eV4tgMQyrqRhbBSaP5LuTuG-Un5OdGB",
-    "endpoint": "https://api.us-south.language-translator.watson.cloud.ibm.com/instances/7633aed0-e7a0-4a76-aa25-22edb4575f29/v3/translate?version=2018-05-01",
+    "apikey": "LtK81mPYgrzxjWo4GPsmsbV0jNCHoQOll0thlbV_URUb",
+    "endpoint": "https://api.us-east.language-translator.watson.cloud.ibm.com/instances/ea08a761-064a-493a-9c53-affba12dc766/v3/translate?version=2018-05-01",
     "en": {
       "enabled": false,
       "model_id": "",
@@ -906,11 +906,11 @@
     "limit": 5000
   },
   "kp_matching": {
-    "endpoint": "http://staging-keypoint-matching-bot-mc:8000/score/",
+    "endpoint": "http://intent-classification.dip.svc.cluster.local:8000/classify",
     "confidence": 0.2
   },
   "intent_classifier": {
-    "endpoint": "http://staging-intent-service:8000/score/",
+    "endpoint": "http://dialog-act-classification.dip.svc.cluster.local:8000/classify",
     "confidence": 0.4
   },
   "candidate_scorer": {
