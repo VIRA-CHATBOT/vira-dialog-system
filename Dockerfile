@@ -47,8 +47,8 @@ USER ${NONROOT_USER}
 EXPOSE 8000 8100
 
 ENV VIRA_API_KEY 3469d6608b2f8646ce514218a0eba49989175ba98bcdc0b898649c052b4b5bf8
-ENV BOT_WA_APIKEY tK81mPYgrzxjWo4GPsmsbV0jNCHoQOll0thlbV_URUb
-ENV BOT_WA_URL https://api.us-east.language-translator.watson.cloud.ibm.com/instances/ea08a761-064a-493a-9c53-affba12dc766
+ENV BOT_WA_APIKEY LtK81mPYgrzxjWo4GPsmsbV0jNCHoQOll0thlbV_URUb
+ENV BOT_WA_URL https://api.us-east.language-translator.watson.cloud.ibm.com/instances/ea08a761-064a-493a-9c53-affba12dc766/v3/translate?version=2018-05-01
 ENV BOT_DASHBOARD_CODE ''
 ENV BOT_KPA_HOST	''
 ENV BOT_KPA_APIKEY	''
@@ -58,4 +58,4 @@ ENV BOT_DIALOG_ACT_CLASSIFIER_URL http://dialog-act-classification.dip.svc.clust
 
 
 # If running behind a proxy like Nginx or Traefik add --proxy-headers
-ENTRYPOINT ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--proxy-headers", "--log-config", "/app/resources/logging.conf", "--log-level", "debug"]
+ENTRYPOINT ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8100", "--proxy-headers", "--log-config", "/app/resources/logging.conf", "--log-level", "debug"]
