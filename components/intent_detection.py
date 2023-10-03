@@ -164,7 +164,7 @@ class IntentDetection:
     def modify_label(self, intent, con_kp):
         if con_kp is not None and intent['label'] == 'default':
             intent['label'] = 'query'
-        elif con_kp is None and intent['label'] in ['concern', 'query', 'default']:
+        elif con_kp is None and intent['label'] in ['concern', 'query', 'default', 'other']:
             if self.advisory_mode['enabled']:
                 intent['label'] = 'default_with_feedback'
             else:
