@@ -104,6 +104,8 @@ class IntentClassifierClient:
     def apply(self, user_arg, disable_cache):
         intents, intent_scores = get_scores(self.url, user_arg, disable_cache)
         if intent_scores[0] > self.confidence:
+            if intent[0] == 'other':
+                intent[0] = 'default'
             return create_intent(label=intents[0], score=intent_scores[0], source='classifier')
         return create_intent(intent_classes[-1], score=1, source='classifier')
 
@@ -162,7 +164,7 @@ class IntentDetection:
     # TODO: have a no-canned-text option for an intent
     # 2) there is a "concern"-intent, but no con kp - we resort to default
     def modify_label(self, intent, con_kp):
-        if con_kp is not None and intent['label'] == 'default':
+        if con_kp is not None and intent['label'] in ['default', 'other']:
             intent['label'] = 'query'
         elif con_kp is None and intent['label'] in ['concern', 'query', 'default', 'other']:
             if self.advisory_mode['enabled']:
