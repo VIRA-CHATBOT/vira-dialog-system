@@ -104,8 +104,8 @@ class IntentClassifierClient:
     def apply(self, user_arg, disable_cache):
         intents, intent_scores = get_scores(self.url, user_arg, disable_cache)
         if intent_scores[0] > self.confidence:
-            if intent[0] == 'other':
-                intent[0] = 'default'
+            if intents[0] == 'other':
+                intents[0] = 'default'
             return create_intent(label=intents[0], score=intent_scores[0], source='classifier')
         return create_intent(intent_classes[-1], score=1, source='classifier')
 
